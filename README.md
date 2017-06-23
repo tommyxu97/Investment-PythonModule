@@ -1,5 +1,7 @@
 # Investment-Python Module
 
+[![Build Status](https://travis-ci.org/tommyxu97/Investment-PythonModule.svg?branch=master)](https://travis-ci.org/tommyxu97/Investment-PythonModule)
+
 >A Python Module which helps you deal with your investment homework with ease. You can use this module to build your asset portfolio by index model or Markowitz model.
 
 ## Setup
