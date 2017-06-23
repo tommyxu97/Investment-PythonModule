@@ -58,8 +58,8 @@ Get the profile by your portfolio:
 
 TommyXu
 
-[HomeSite](xht97.cn)
-[Blog](blog.xht97.cn)
+[HomeSite](http://xht97.cn)
+[Blog](http://blog.xht97.cn)
 
 [Email:i@xht97.cn](tomail:i@xht97.cn)
 
