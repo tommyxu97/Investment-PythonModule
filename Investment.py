@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
+# Investment
 # AssetPortfolio Class
-# A Module Helping You Complete Investment Homework with ONE CLICK =o=
+# A Module Helping You Complete Investment Homework with ONE CLICK
 # By TommyXu 2017-06
 
 import tushare as ts
@@ -15,25 +16,25 @@ import os
 
 class assetPortfolio:
     
-    gupiaolist = []
+    stocklist = []
     ratio = []
     moneyallocation = []
-    gupiaodata = pd.DataFrame()
+    stockdata = pd.DataFrame()
     start = None
     end = None
     
-    def __init__(self, gupiao_list, ratio_input, start_input, end_input):
+    def __init__(self, stock_list, ratio_input, start_input, end_input):
         '''
         Initialize with parameters you input.
         When using the class, you should instantiate this class.
-        You need to input at least the gupiao_list data to ensure the program's running.
+        You need to input at least the stock_list data to ensure the program's running.
         '''
-        self.gupiaolist = gupiao_list
+        self.stocklist = stock_list
         self.ratio = ratio_input
         self.start = start_input
         self.end = end_input
-        # Check if the length of gupiaolist and ratio are the same
-        if len(self.gupiaolist) == len(self.ratio):
+        # Check if the length of stocklist and ratio are the same
+        if len(self.stocklist) == len(self.ratio):
             pass
         else:
             print("There exists an error with the list and ratio!")
@@ -43,7 +44,7 @@ class assetPortfolio:
         Input the total amount of money and allocate it with the ratio which has been input or calculated by the program.
         '''
         moneyalloction = []
-        if self.gupiaolist == []:
+        if self.stocklist == []:
             print("There is no protfolio in memory!")
         for i in range(0, len(self.ratio)):
             moneyalloction.append(self.ratio[i] * money_of_investment)
@@ -54,9 +55,9 @@ class assetPortfolio:
         Build a asset protfolio using index model.
         '''
         hs300_data = ts.get_hist_data('hs300', self.start, self.end)
-        self.gupiaodata['hs300'] = hs300_data['close']
-        for gupiao_singel in self.gupiaolist:
-            self.gupiaodata[gupiao_single] = ts.get_hist_data(gupiao_singel, self.start, self.end)['close']
+        self.stockdata['hs300'] = hs300_data['close']
+        for stock_single in self.stocklist:
+            self.stockdata[stock_single] = ts.get_hist_data(stock_single, self.start, self.end)['close']
         returns = (data/data.shift(1))-1
         
         print('This function will be completed later!')
@@ -68,14 +69,14 @@ class assetPortfolio:
         Output the data of your asset portfolio with the format '.csv' to the place you want.
         '''
         try:
-            for i in range(len(self.gupiaolist)):
-                self.gupiaodata[self.gupiaolist[i]]
+            for i in range(len(self.stocklist)):
+                self.stockdata[self.stocklist[i]]
         except:
             hs300_data = ts.get_hist_data('hs300', self.start, self.end)
-            self.gupiaodata['hs300'] = hs300_data['close']
-            for gupiao_singel in self.gupiaolist:
-                self.gupiaodata[gupiao_single] = ts.get_hist_data(gupiao_singel, self.start, self.end)['close']             
-        data = self.gupiaodata
+            self.stockdata['hs300'] = hs300_data['close']
+            for stock_single in self.stocklist:
+                self.stockdata[stock_single] = ts.get_hist_data(stock_single, self.start, self.end)['close']             
+        data = self.stockdata
         data.to_csv(path_input)
         print("The file has been generated at ", path_input, ".")
         
@@ -86,18 +87,18 @@ class assetPortfolio:
         profile = []
         profileratio = []
         sum_of_profile = 0
-        for gupiao_single in self.gupiaolist:
-            print("Now processing:", gupiao_single)
-            self.gupiaodata[gupiao_single] = ts.get_hist_data(gupiao_single, self.start, self.end)['close']
-            profileratio.append((self.gupiaodata[gupiao_single].loc[self.end]-self.gupiaodata[gupiao_single].loc[self.start])/self.gupiaodata[gupiao_single].loc[self.start])
-        for i in range(0, len(self.gupiaolist)):
+        for stock_single in self.stocklist:
+            print("Now processing:", stock_single)
+            self.stockdata[stock_single] = ts.get_hist_data(stock_single, self.start, self.end)['close']
+            profileratio.append((self.stockdata[stock_single].loc[self.end]-self.stockdata[stock_single].loc[self.start])/self.stockdata[stock_single].loc[self.start])
+        for i in range(0, len(self.stocklist)):
             profile.append(self.moneyallocation[i] * float(profileratio[i]))
             if math.isnan(profile[i]) != True:
                 sum_of_profile = profile[i] + sum_of_profile
             else:
                 pass
         for i in range(0, len(profile)):
-            print(self.gupiaolist[i], profile[i],"\n")
+            print(self.stocklist[i], profile[i],"\n")
         print("Totel profile is", sum_of_profile)
         
     def getGraph(self, stock_code, option, path_input):

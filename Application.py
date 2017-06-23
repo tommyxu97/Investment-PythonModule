@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -
 
 
-import Investment as invest
+import Investment as iv
 
 # gupiaolist = ['000048','000601','000561','002618','300003','002168','002134','002389','600809','600132','600429','000651','000333','002050','000921','600690','600267','600211','002294','300026','600535','300014']
 # gupiaoratio = [0.0424,0.0410,0.0621,0.0424,0.0428,0.0600,0.0320,0.0350,0.052,0.0362,0.023,0.0603,0.0618,0.0404,0.0625,0.0408,0.0406,0.022,0.041,0.0592,0.042,0.0615]
@@ -18,6 +18,6 @@ gupiaoratio = [0.091,0.1387,0.0921,0.2153,0.1746,0.1637,0.1061,0.1385,0.0869,0.0
 start = '2017-04-21'
 end = '2017-06-15'
 
-gupiao = invest.assetPortfolio(gupiaolist, gupiaoratio, start, end)
+gupiao = iv.assetPortfolio(gupiaolist, gupiaoratio, start, end)
 gupiao.allocate(1000)
 gupiao.profile()
