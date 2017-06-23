@@ -65,7 +65,7 @@ TommyXu
 
 [Email:i@xht97.cn](tomail:i@xht97.cn)
 
-![logo](http://cdn.xht97.cn/logo.png =200x200)
+![logo](logo.ico)
 
 
 
