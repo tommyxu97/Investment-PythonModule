@@ -25,7 +25,9 @@ The four modules that mainly used in Investment are:
 
 ### Import
 
-Import this module with the following code in your python fi	import investment as iv
+Import this module with the following code in your python:
+	
+	import investment as iv
 
 ### func \_\_init__()
 
