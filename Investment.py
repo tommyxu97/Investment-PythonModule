@@ -9,16 +9,20 @@ import tushare as ts
 import pandas as pd
 from urllib import request
 import numpy as np
+# import sklearn
 # import matplotlib
 import datetime
 import math
 import os
 
 class assetPortfolio:
-    
+    '''
+    A class which you can quickly complete your investment homework with.
+    '''    
     stocklist = []
     ratio = []
     moneyallocation = []
+    baseearning = 0
     stockdata = pd.DataFrame()
     start = None
     end = None
@@ -50,6 +54,12 @@ class assetPortfolio:
             moneyalloction.append(self.ratio[i] * money_of_investment)
         self.moneyallocation = moneyalloction
             
+    def set_base_earning(excess_earning):
+        '''
+        Set you base earning so the program can get you excess earning.
+        '''
+        self.baseearning = excess_earning
+    
     def index_model(self):
         '''
         Build a asset protfolio using index model.
@@ -58,7 +68,11 @@ class assetPortfolio:
         self.stockdata['hs300'] = hs300_data['close']
         for stock_single in self.stocklist:
             self.stockdata[stock_single] = ts.get_hist_data(stock_single, self.start, self.end)['close']
-        returns = (data/data.shift(1))-1
+        returns = (self.stockdata/self.stockdata.shift(1))-1
+        
+        
+        
+        
         
         print('This function will be completed later!')
         
@@ -101,7 +115,7 @@ class assetPortfolio:
             print(self.stocklist[i], profile[i],"\n")
         print("Totel profile is", sum_of_profile)
         
-    def getGraph(self, stock_code, option, path_input):
+    def get_graph(self, stock_code, option, path_input):
         '''
         Using sina's finance API to get the graph of the stocks.You need to provied stock_code and option at least
         to ensure this function's running.

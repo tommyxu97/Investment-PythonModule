@@ -21,3 +21,8 @@ end = '2017-06-15'
 gupiao = iv.assetPortfolio(gupiaolist, gupiaoratio, start, end)
 gupiao.allocate(1000)
 gupiao.profile()
+
+gupiao.data_to_csv("/Users/xuhaotian/data.csv")
+
+
+gupiao.getGraph('000796', 1, "/Users/xuhaotian/data.png")
