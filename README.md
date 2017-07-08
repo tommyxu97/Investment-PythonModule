@@ -28,7 +28,11 @@ Download the Investment.py in this repo and put it in you root directory.
 ### Import
 
 Import this module with the following code in your python:
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/master
 	import investment as iv
 
 ### Func \_\_init__()
