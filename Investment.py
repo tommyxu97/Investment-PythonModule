@@ -155,7 +155,7 @@ class Portfolio:
         except IOError:
             print('Path not exists!')
         
-    def get_graph(self, stock_code, option=1, path_input):
+    def get_graph(self, stock_code, path_input, option=1):
         """
         Using sina's finance API to get the graph of the stocks.You need to provied stock_code and option at least
         to ensure this function's running.
