@@ -18,11 +18,11 @@ gupiaoratio = [0.091,0.1387,0.0921,0.2153,0.1746,0.1637,0.1061,0.1385,0.0869,0.0
 start = '2017-04-21'
 end = '2017-06-15'
 
-gupiao = iv.assetPortfolio(gupiaolist, gupiaoratio, start, end)
+gupiao = iv.Portfolio(gupiaolist, gupiaoratio, start, end)
 gupiao.allocate(1000)
 gupiao.profile()
 
-gupiao.data_to_csv("../data.csv")
+gupiao.data_to_csv("./data.csv")
 
 
 # gupiao.getGraph('000796', 1, "../data.png")
